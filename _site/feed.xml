@@ -5,7 +5,7 @@
     <description>David's blog...</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <updated>2017-11-01T00:12:23+00:00</updated>
+    <updated>2017-11-01T00:16:22+00:00</updated>
     <id>http://localhost:4000</id>
     <author>
       <name>David Barber</name>
@@ -128,8 +128,8 @@ System 1, is a fast, unconscious and automatic mode of thought, also known as in
 </description>
         
         <pubDate>Mon, 30 Oct 2017 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/blog/2017/10/30/Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/10/30/Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</guid>
+        <link>http://localhost:4000/draftblog/2017/10/30/Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</link>
+        <guid isPermaLink="true">http://localhost:4000/draftblog/2017/10/30/Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</guid>
       </item>
     
       <item>
@@ -275,8 +275,8 @@ System 1, is a fast, unconscious and automatic mode of thought, also known as in
 </description>
         
         <pubDate>Sun, 30 Jul 2017 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/blog/2017/07/30/Optima-in-Feedforward-Neural-Nets/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/07/30/Optima-in-Feedforward-Neural-Nets/</guid>
+        <link>http://localhost:4000/draftblog/2017/07/30/Optima-in-Feedforward-Neural-Nets/</link>
+        <guid isPermaLink="true">http://localhost:4000/draftblog/2017/07/30/Optima-in-Feedforward-Neural-Nets/</guid>
       </item>
     
       <item>
@@ -426,8 +426,8 @@ This shows that the &quot;evolutionary approach&quot; is in fact a special case 
 </description>
         
         <pubDate>Mon, 03 Apr 2017 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/blog/2017/04/03/variational-optimisation/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/04/03/variational-optimisation/</guid>
+        <link>http://localhost:4000/draftblog/2017/04/03/variational-optimisation/</link>
+        <guid isPermaLink="true">http://localhost:4000/draftblog/2017/04/03/variational-optimisation/</guid>
       </item>
     
       <item>
@@ -499,8 +499,8 @@ BlackOut.&lt;/p&gt;
 </description>
         
         <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/blog/2017/03/15/large-number-of-classes/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/03/15/large-number-of-classes/</guid>
+        <link>http://localhost:4000/draftblog/2017/03/15/large-number-of-classes/</link>
+        <guid isPermaLink="true">http://localhost:4000/draftblog/2017/03/15/large-number-of-classes/</guid>
       </item>
     
   </channel>
