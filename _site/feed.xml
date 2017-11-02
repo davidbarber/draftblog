@@ -5,14 +5,14 @@
     <description>David's blog...</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <updated>2017-11-02T10:24:02+00:00</updated>
+    <updated>2017-11-02T12:31:09+00:00</updated>
     <id>http://localhost:4000</id>
     <author>
       <name>David Barber</name>
     </author>
     
       <item>
-        <title>Thinking Fast and Slow with Deep Learning and Tree Search</title>
+        <title>Learning From Scratch by Thinking Fast and Slow with Deep Learning and Tree Search</title>
         
           <description>&lt;p&gt;Training powerful reinforcement learning agents from scratch by Thinking Fast and Slow.&lt;/p&gt;
 
@@ -41,7 +41,7 @@ System 1 is a fast, unconscious and automatic mode of thought, also known as int
 
 &lt;h2 class=&quot;no_toc&quot; id=&quot;expert-iteration-exit&quot;&gt;Expert Iteration (ExIt)&lt;/h2&gt;
 
-&lt;p&gt;Expert Iteration&lt;sup id=&quot;fnref:NIPSpaper&quot;&gt;&lt;a href=&quot;#fn:NIPSpaper&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; (ExIt) is a general framework for learning that we introduced in July 2017&lt;sup id=&quot;fnref:AXpaper&quot;&gt;&lt;a href=&quot;#fn:AXpaper&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; and can result in powerful AI machines, without needing to mimic human strategies.&lt;/p&gt;
+&lt;p&gt;Expert Iteration&lt;sup id=&quot;fnref:NIPSpaper&quot;&gt;&lt;a href=&quot;#fn:NIPSpaper&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; (ExIt) is a general framework for learning that we introduced in July 2017 and can result in powerful AI machines, without needing to mimic human strategies.&lt;/p&gt;
 
 &lt;p class=&quot;text-center&quot;&gt;&lt;img src=&quot;http://web4.cs.ucl.ac.uk/staff/D.Barber/images//ExIt.png&quot; alt=&quot;ExIt&quot; title=&quot;Expert Iteration&quot; /&gt;&lt;/p&gt;
 
@@ -63,7 +63,7 @@ System 1 is a fast, unconscious and automatic mode of thought, also known as int
 
 &lt;h3 class=&quot;no_toc&quot; id=&quot;tree-search-and-deep-learning&quot;&gt;Tree Search and Deep Learning&lt;/h3&gt;
 
-&lt;p&gt;Exit is a general strategy for learning and the apprentice and expert can be specified in a variety of ways. In board games Monte Carlo Tree Search (MCTS) is a strong playing strategy&lt;sup id=&quot;fnref:MCTS&quot;&gt;&lt;a href=&quot;#fn:MCTS&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; and is a natural candidate to play the role of the expert.  Deep Learning has been shown to be a successful method to imitate the play of strong players&lt;sup id=&quot;fnref:AlphaGo:2&quot;&gt;&lt;a href=&quot;#fn:AlphaGo&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; which we therefore use as the apprentice.&lt;/p&gt;
+&lt;p&gt;Exit is a general strategy for learning and the apprentice and expert can be specified in a variety of ways. In board games Monte Carlo Tree Search (MCTS) is a strong playing strategy&lt;sup id=&quot;fnref:MCTS&quot;&gt;&lt;a href=&quot;#fn:MCTS&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; and is a natural candidate to play the role of the expert.  Deep Learning has been shown to be a successful method to imitate the play of strong players&lt;sup id=&quot;fnref:AlphaGo:2&quot;&gt;&lt;a href=&quot;#fn:AlphaGo&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; which we therefore use as the apprentice.&lt;/p&gt;
 
 &lt;p&gt;At the Expert Improvement phase we use the apprentice to direct the Monte Carlo Tree Search algorithm toward promising moves, effectively reducing the game tree search breadth and depth. In this way, we bootstrap the knowledge acquired by Imitation Learning back into the planning algorithm.&lt;/p&gt;
 
@@ -75,19 +75,19 @@ System 1 is a fast, unconscious and automatic mode of thought, also known as int
 
 &lt;p class=&quot;text-center&quot;&gt;&lt;img src=&quot;http://web4.cs.ucl.ac.uk/staff/D.Barber/images//hexBW.png&quot; alt=&quot;hex&quot; title=&quot;Hex&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The above represents play on a &lt;script type=&quot;math/tex&quot;&gt;5\times 5&lt;/script&gt; board, with white winning (reproduced from &lt;sup id=&quot;fnref:MOHEX&quot;&gt;&lt;a href=&quot;#fn:MOHEX&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;).   Hex has deep strategy, making it challenging for machines to play and its large action set and connection-based rules means it shares similar challenges for AI to Go. Compared to Go, the rules are simpler and there can be no draws, making it an ideal testbed for AI game play learning trategies.&lt;/p&gt;
+&lt;p&gt;The above represents play on a &lt;script type=&quot;math/tex&quot;&gt;5\times 5&lt;/script&gt; board, with white winning (reproduced from &lt;sup id=&quot;fnref:MOHEX&quot;&gt;&lt;a href=&quot;#fn:MOHEX&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;).   Hex has deep strategy, making it challenging for machines to play and its large action set and connection-based rules means it shares similar challenges for AI to Go. Compared to Go, the rules are simpler and there can be no draws, making it an ideal testbed for AI game play learning trategies.&lt;/p&gt;
 
-&lt;p&gt;Because the rules of Hex are so simple, the game is relatively amenable to mathematical analysis (compared for example to Go) and the current best machine player MOHEX&lt;sup id=&quot;fnref:MOHEX:1&quot;&gt;&lt;a href=&quot;#fn:MOHEX&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt; uses a combination of Monte Carlo Tree Search and smart mathematical insights.  MOHEX has won every Computer Games Olympiad Hex tournament since 2009. It is noteworthy that MOHEX is also initially trained on datasets of human expert play.&lt;/p&gt;
+&lt;p&gt;Because the rules of Hex are so simple, the game is relatively amenable to mathematical analysis (compared for example to Go) and the current best machine player MOHEX&lt;sup id=&quot;fnref:MOHEX:1&quot;&gt;&lt;a href=&quot;#fn:MOHEX&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; uses a combination of Monte Carlo Tree Search and smart mathematical insights.  MOHEX has won every Computer Games Olympiad Hex tournament since 2009. It is noteworthy that MOHEX is also initially trained on datasets of human expert play.&lt;/p&gt;
 
 &lt;p&gt;We wanted to see if we can outperform MOHEX by using our ExIt strategy, learning trained tabula rasa, without game-specific knowledge or human example play (beside the rules of the game). To do this, our expert is a MCTS player that is guided by the apprentice neural network.  Our neural network is based on a deep convolutional network, as shown below&lt;/p&gt;
 
 &lt;p class=&quot;text-center&quot;&gt;&lt;img src=&quot;http://web4.cs.ucl.ac.uk/staff/D.Barber/images//NN.png&quot; alt=&quot;NN&quot; title=&quot;NN&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Expert Improvement is achieved by using the modified MCTS formula&lt;sup id=&quot;fnref:OnlineOffline&quot;&gt;&lt;a href=&quot;#fn:OnlineOffline&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Expert Improvement is achieved by using the modified MCTS formula&lt;sup id=&quot;fnref:OnlineOffline&quot;&gt;&lt;a href=&quot;#fn:OnlineOffline&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;UCT(s,a) + w \frac{\hat{\pi}(a|s)}{n(s,a)+1}&lt;/script&gt;
 
-&lt;p&gt;Here &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt; is the state of the Hex board, &lt;script type=&quot;math/tex&quot;&gt;a&lt;/script&gt; is a possible action (ie move) from &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;. The term &lt;script type=&quot;math/tex&quot;&gt;UCT(s,a)&lt;/script&gt; represents the classical Upper Confidence Tree formula&lt;sup id=&quot;fnref:MCTS:1&quot;&gt;&lt;a href=&quot;#fn:MCTS&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; used in MCTS.&lt;/p&gt;
+&lt;p&gt;Here &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt; is the state of the Hex board, &lt;script type=&quot;math/tex&quot;&gt;a&lt;/script&gt; is a possible action (ie move) from &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;. The term &lt;script type=&quot;math/tex&quot;&gt;UCT(s,a)&lt;/script&gt; represents the classical Upper Confidence Tree formula&lt;sup id=&quot;fnref:MCTS:1&quot;&gt;&lt;a href=&quot;#fn:MCTS&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; used in MCTS.&lt;/p&gt;
 
 &lt;p&gt;The additional term helps the neural network apprentice  guide the search to more promising moves. Here &lt;script type=&quot;math/tex&quot;&gt;\hat{\pi}&lt;/script&gt; is the policy (suggested relative strength of each possible action &lt;script type=&quot;math/tex&quot;&gt;a&lt;/script&gt; from the board state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;) of the apprentice and &lt;script type=&quot;math/tex&quot;&gt;n(s,a)&lt;/script&gt; the number of visits currently made by the search algorithm through state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt; and taking action &lt;script type=&quot;math/tex&quot;&gt;a&lt;/script&gt;; &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt; is an empirically chosen weighting factor that balances the slow thinking of the expert with the fast intuition of the apprentice.&lt;/p&gt;
 
@@ -99,13 +99,13 @@ System 1 is a fast, unconscious and automatic mode of thought, also known as int
 
 &lt;h3 class=&quot;no_toc&quot; id=&quot;relation-to-alphago-zero&quot;&gt;Relation to AlphaGo Zero&lt;/h3&gt;
 
-&lt;p&gt;AlphaGo Zero&lt;sup id=&quot;fnref:AlphaGoZero&quot;&gt;&lt;a href=&quot;#fn:AlphaGoZero&quot; class=&quot;footnote&quot;&gt;10&lt;/a&gt;&lt;/sup&gt; (published a few months after our work first appeared) also implements an ExIt style algorithm and shows that it possible to achieve state-of-the-art performance in Go without the use of human expert play.  There are subtle differences in the details of the training approach and architecture used, but the overall approach is essentially the same.&lt;/p&gt;
+&lt;p&gt;AlphaGo Zero&lt;sup id=&quot;fnref:AlphaGoZero&quot;&gt;&lt;a href=&quot;#fn:AlphaGoZero&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt; (published a few months after the first version of our work appeared&lt;sup id=&quot;fnref:AXpaper&quot;&gt;&lt;a href=&quot;#fn:AXpaper&quot; class=&quot;footnote&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;) also implements an ExIt style algorithm and shows that it possible to achieve state-of-the-art performance in Go without the use of human expert play.  There are subtle differences in the details of the training approach and architecture used, but the overall approach is essentially the same.&lt;/p&gt;
 
 &lt;h2 class=&quot;no_toc&quot; id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
-&lt;p&gt;However, we believe that it is important to state the general applicability of the ExIT idea and&lt;/p&gt;
+&lt;!--However, we believe that it is important to state the general applicability of the ExIT idea and--&gt;
 
-&lt;p&gt;Expert Iteration is a new Reinforcement Learning algorithm,, motivated by the dual process theory of human thought. ExIt decomposes the Reinforcement Learning problem by separating the problems of generalisation and planning. Planning is performed on a case-by-case basis, and only once a strong plan is found is the resultant policy generalised. This allows for long-term planning, and results in faster learning and state-of-the-art final performance, particularly for challenging problems.&lt;/p&gt;
+&lt;p&gt;Expert Iteration is a new Reinforcement Learning algorithm, motivated by the dual process theory of human thought. ExIt decomposes the Reinforcement Learning into the separate subproblems of generalisation and planning. Planning is performed on a case-by-case basis, and only once a strong plan is found is the resultant policy generalised. This allows for long-term planning and results in faster learning and state-of-the-art final performance, particularly for challenging problems. The algorithm is powerful enough to produce state-of-the-art board game AI players without requiring any examples of expert human play.&lt;/p&gt;
 
 &lt;!--We show that this algorithm significantly outperforms a variant of the REINFORCE algorithm in
 learning to play the board game Hex, and that the resultant tree search algorithm comfortably  defeats the state-of-the-art in Hex play, despite being trained tabula rasa.--&gt;
@@ -129,9 +129,6 @@ learning to play the board game Hex, and that the resultant tree search algorith
     &lt;li id=&quot;fn:NIPSpaper&quot;&gt;
       &lt;p&gt;T. Anthony, and T. Zheng, and D. Barber. Thinking Fast and Slow with Deep Learning and Tree Search. arXiv CoRR:abs/1705.08439. http://arxiv.org/abs/1705.08439, June 2017.&amp;nbsp;&lt;a href=&quot;#fnref:NIPSpaper&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:NIPSpaper:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:AXpaper&quot;&gt;
-      &lt;p&gt;T. Anthony, and T. Zheng, and D. Barber. Thinking Fast and Slow with Deep Learning and Tree Search. arXiv CoRR:abs/1705.08439. http://arxiv.org/abs/1705.08439, June 2017.&amp;nbsp;&lt;a href=&quot;#fnref:AXpaper&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
     &lt;li id=&quot;fn:MCTS&quot;&gt;
       &lt;p&gt;L. Kocsis and C. Szepesvári. Bandit Based Monte-Carlo Planning. In European Conference on Machine Learning, pages 282–293. Springer, 2006.&amp;nbsp;&lt;a href=&quot;#fnref:MCTS&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:MCTS:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
@@ -142,15 +139,18 @@ learning to play the board game Hex, and that the resultant tree search algorith
       &lt;p&gt;S. Gelly and D. Silver. Combining Online and Offline Knowledge in UCT. In Proceedings of the 24th International Conference on Machine learning, pages 273–280. ACM, 2007.&amp;nbsp;&lt;a href=&quot;#fnref:OnlineOffline&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:AlphaGoZero&quot;&gt;
-      &lt;p&gt;D. Silver,  etal.  Mastering the game of Go without human knowledge. Nature 550, 354–359, October 2017.&amp;nbsp;&lt;a href=&quot;#fnref:AlphaGoZero&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;D. Silver,  etal.  Mastering the game of Go without human knowledge. Nature 550:354–359, October 2017.&amp;nbsp;&lt;a href=&quot;#fnref:AlphaGoZero&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:AXpaper&quot;&gt;
+      &lt;p&gt;T. Anthony, and T. Zheng, and D. Barber. Thinking Fast and Slow with Deep Learning and Tree Search. arXiv CoRR:abs/1705.08439. http://arxiv.org/abs/1705.08439, June 2017.&amp;nbsp;&lt;a href=&quot;#fnref:AXpaper&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
 </description>
         
         <pubDate>Mon, 30 Oct 2017 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/draftblog/2017/10/30/Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</link>
-        <guid isPermaLink="true">http://localhost:4000/draftblog/2017/10/30/Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</guid>
+        <link>http://localhost:4000/draftblog/2017/10/30/Learrning-From-Scratch-by-Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</link>
+        <guid isPermaLink="true">http://localhost:4000/draftblog/2017/10/30/Learrning-From-Scratch-by-Thinking-Fast-and-Slow-with-Deep-Learning-and-Tree-Search/</guid>
       </item>
     
       <item>
