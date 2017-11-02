@@ -251,7 +251,7 @@ Credits: http://localhost:4000/disclosure
 </span>
 
     
-  <p>How to train powerful reinforcement learning agents by Thinking Fast and Slow.</p>
+  <p>Training powerful reinforcement learning agents from scratch by Thinking Fast and Slow.</p>
 
 <!--more-->
 
@@ -262,86 +262,98 @@ Credits: http://localhost:4000/disclosure
 <h2 class="no_toc" id="dual-process-theory">Dual Process Theory</h2>
 
 <p>According to <a href="https://en.wikipedia.org/wiki/Dual_process_theory">dual-process theory</a> human reasoning consists of two different kinds of thinking.
-System 1, is a fast, unconscious and automatic mode of thought, also known as intuition or heuristic process. System 2, an evolutionarily recent process unique to humans, is a slow, conscious, explicit and rule-based mode of reasoning.</p>
+System 1 is a fast, unconscious and automatic mode of thought, also known as intuition or heuristic process. System 2 is a slow, conscious, explicit and rule-based mode of reasoning is believed to  be an evolutionarily recent process.</p>
 
 <p class="text-center"><img src="http://web4.cs.ucl.ac.uk/staff/D.Barber/images//behaviour-design-predicting-irrational-decisions-12-638.jpg" alt="dual process" title="dual process theory" />
 <a href="https://www.slideshare.net/AshDonaldson/behaviour-design-predicting-irrational-decisions">image credit</a></p>
 
-<p>When learning to complete a challenging planning task, such as playing a board game, humans exploit both processes: strong intuitions allow for more effective analytic reasoning by rapidly selecting interesting lines of play for consideration. Repeated deep study gradually improves intuitions. Stronger intuitions feedback to stronger analysis, creating a closed learning loop. In other words, humans learn by thinking fast and slow.</p>
+<p>When learning to complete a challenging planning task, such as playing a board game, humans exploit both processes: strong intuitions allow for more effective analytic reasoning by rapidly selecting interesting lines of play for consideration. Repeated deep study gradually improves intuitions. Stronger intuitions feedback to stronger analysis, creating a closed learning loop. In other words, humans learn by thinking fast and slow<sup id="fnref:TFAS"><a href="#fn:TFAS" class="footnote">1</a></sup>.</p>
 
 <!--### What's wrong with Deep RL?
 {:.no_toc}-->
 
-<p>In current Deep Reinforcement Learning algorithms such as Policy Gradients<sup id="fnref:Williams"><a href="#fn:Williams" class="footnote">1</a></sup> and DQN<sup id="fnref:DQN"><a href="#fn:DQN" class="footnote">2</a></sup>, neural networks make action selections with no lookahead; this is analogous to System 1. Unlike human intuition, their training does not benefit from a ‘System 2’ to suggest strong policies. Another issue is that state-of-the-art RL board playing algorithms require an initial database of human expert play<sup id="fnref:AlphaGo"><a href="#fn:AlphaGo" class="footnote">3</a></sup>. Making a state-of-the-art board game player <em>ex nihilo</em> is a major challenge for AI.</p>
+<p>In current Deep Reinforcement Learning algorithms such as Policy Gradients<sup id="fnref:Williams"><a href="#fn:Williams" class="footnote">2</a></sup> and DQN<sup id="fnref:DQN"><a href="#fn:DQN" class="footnote">3</a></sup>, neural networks make action selections with no lookahead; this is analogous to System 1. Unlike human intuition, their training does not benefit from a ‘System 2’ to suggest strong policies.</p>
+
+<p>A criticism of some AI algorithms such as AlphaGo<sup id="fnref:AlphaGo"><a href="#fn:AlphaGo" class="footnote">4</a></sup> is that they use a database of human expert play<sup id="fnref:AlphaGo:1"><a href="#fn:AlphaGo" class="footnote">4</a></sup>.   In the initial phase of training the RL agent mimics the moves of a human expert – only after this initial phase does it begin to learn potentially more powerful super-human play. This is somewhat unsatisfactory since the resulting algorithm may be heavily biased toward a play human style of playing, blind to potentially more powerful lines of play. Whilst, in areas such as game playing, it is natural to assume that there will be a database of human expert play available, in other settings in which we wish to train an AI machine, no such database may be available. Therefore, showing how to train a state-of-the-art board game player <em>ex nihilo</em> is a major challenge for AI.</p>
 
 <h2 class="no_toc" id="expert-iteration-exit">Expert Iteration (ExIt)</h2>
 
-<p>In our <a href="">NIPSexitpaper</a>, we introduced Expert Iteration (ExIt), which is a new and general framework for learning.</p>
+<p>Expert Iteration<sup id="fnref:NIPSpaper"><a href="#fn:NIPSpaper" class="footnote">5</a></sup> (ExIt) is a general framework for learning that we introduced in July 2017<sup id="fnref:AXpaper"><a href="#fn:AXpaper" class="footnote">6</a></sup> and can result in powerful AI machines, without needing to mimic human strategies.</p>
 
 <p class="text-center"><img src="http://web4.cs.ucl.ac.uk/staff/D.Barber/images//ExIt.png" alt="ExIt" title="Expert Iteration" /></p>
 
-<p>ExIt can be viewed as an extension of Imitation Learning (IL) methods to domains where the best known experts are unable to achieve satisfactory performance. In stanadard IL an apprentice is trained to imitate the behaviour of an expert.  In ExIt, we extend this to an iterative learning process.  Between each iteration, we perform an Expert Improvement step, where we bootstrap the (fast) apprentice policy to increase the performance of the (comparatively slow) expert.</p>
+<p>ExIt can be viewed as an extension of Imitation Learning (IL) methods to domains where the best known experts are unable to achieve satisfactory performance. In standard IL an apprentice is trained to imitate the behaviour of an expert.  In ExIt, we extend this to an iterative learning process.  Between each iteration, we perform an Expert Improvement step, where we bootstrap the (fast) apprentice policy to increase the performance of the (comparatively slow) expert.</p>
 
 <p>To give some intuition around this idea, consider playing a board game such as chess. Here the expert is analogous to a strong (but slow) chess player, and the apprentice is analogous to an initially novice (but quick thinking) chess player.</p>
 
-<p>Initially the expert player plays some games against an opponent. The expert is a strong player, thinking deep (and slow) about each move. The apprentice observes the chess board state and each eventual move made by the expert and then tries his best to learn to quickly imitate the move made by the expert in each of the observed board positions . In an algorithm, this imitation could be done, for example, by fitting a neural network to the move made by the expert from a game position.  The apprentice learns a fast policy that is able to quickly imitate the play of the expert on the moves seen so far.  A key point here is that the apprentice learns in such a way that they are able to generalise and then apply their quick intution on positions not previously seen – the neural network thus plays the role of both generalising and imitating the play of the expert.</p>
+<p>Initially the expert player plays some games against an opponent. The expert is a strong player, thinking deep (and slow) about each move. The apprentice observes each chess board state and the eventual move made by the expert for each of those states. She then tries her best to learn to quickly imitate the move made by the expert in each of the observed board positions.</p>
 
-<p>Now that the apprentice has learned a fast imitation of the expert (on the moves seen so far), she can try to be of use to the expert.  One approach would be that when the expert now wishes to make a move, a small set of candidate moves are suggested very quickly by the apprentice which the expert can then consider in depth, possibly also guided during this slow thought process by other quick suggestions by the apprentice.</p>
+<p>For an AI game playing machine, this imitation could be achieved, for example, by fitting a neural network to the move made by another `machine expert’ from a game position.  The apprentice learns a fast policy that is able to quickly imitate the play of the expert on the moves seen so far.  A key point here is that, assuming that there is structure underlying the game,  Machine Learning enables the apprentice to generalise their quick intuitive decision on positions not previously seen. That is, the apprentice isn’t just a creating a look-up-table of moves made by the human from a fixed database of positions. The neural network thus plays the role of both generalising and imitating the play of the expert.</p>
+
+<p>Now that the apprentice has learned a fast imitation of the expert (on the moves seen so far), she can try to be of use to the expert. When the expert now wishes to make a move, a small set of candidate moves are suggested very quickly by the apprentice which the expert can then consider in depth, possibly also guided during this slow thought process by other quick insights from the apprentice.</p>
 
 <p>At the end of this phase, the expert will have made a set of apprentice-aided moves, with each move being typically  much stronger than the apprentice could have made with the deep (but slow) thought of the expert.</p>
 
-<p>The above process now repeats, with the apprentice retraining on the moves suggested by the expert. This completes one full iteration of the learning phase of the apprentice and we iterate this process until we either run out of time or the apprentice learns to perform at roughly the same level as the expert.</p>
+<p>The above process now repeats, with the apprentice retraining on the moves suggested by the expert. This completes one full iteration of the learning phase and we iterate this process until the apprentice learns to perform at roughly the same level as the expert.</p>
 
-<p>From a Dual Process perspective, the Imitation Learning step is analogous to a human improving their intuition for the task by studying example problems, while the Expert Improvement step is analogous to a human using the their improved intuition to guide future analysis</p>
+<p>From a Dual Process perspective, the Imitation Learning step is analogous to a human improving their intuition for the task by studying example problems, while the Expert Improvement step is analogous to a human using their improved intuition to guide future analysis.</p>
 
 <h3 class="no_toc" id="tree-search-and-deep-learning">Tree Search and Deep Learning</h3>
 
-<p>Exit is a very general strategy for learning and the apprentice and expert can be specified in a variety of ways. In board games Monte Carlo Tree Search is a strong playing strategy<sup id="fnref:MCTS"><a href="#fn:MCTS" class="footnote">4</a></sup> and is a natural candidate to play the role of the expert.  Deep Learning has been shown to be a successfull method to imitate the play of strong players and it is therefore a natural candidate to play the role of the apprentice<sup id="fnref:AlphaGo:1"><a href="#fn:AlphaGo" class="footnote">3</a></sup>.</p>
+<p>Exit is a general strategy for learning and the apprentice and expert can be specified in a variety of ways. In board games Monte Carlo Tree Search (MCTS) is a strong playing strategy<sup id="fnref:MCTS"><a href="#fn:MCTS" class="footnote">7</a></sup> and is a natural candidate to play the role of the expert.  Deep Learning has been shown to be a successful method to imitate the play of strong players<sup id="fnref:AlphaGo:2"><a href="#fn:AlphaGo" class="footnote">4</a></sup> which we therefore use as the apprentice.</p>
 
-<p>The expert policy is calculated using a tree search algorithm. We use the apprentice to improve such an expert by using the apprentice policy to direct search effort towards promising moves, or by evaluating states encountered during search more quickly and accurately using our apprentice, effectively reducing the search breadth and depth. In other words, we bootstrap the knowledge acquired by Imitation Learning back into the planning algorithm.</p>
+<p>At the Expert Improvement phase we use the apprentice to direct the Monte Carlo Tree Search algorithm toward promising moves, effectively reducing the game tree search breadth and depth. In this way, we bootstrap the knowledge acquired by Imitation Learning back into the planning algorithm.</p>
 
-<!--The role of the expert is to perform exploration, and thereby to accurately determine strong move sequences, from a single position. The role of the apprentice is to generalise the policies that the expert discovers across the whole state space, and to provide rapid access to that strong policy for bootstrapping in future searches. The canonical choice of expert is a tree search algorithm. Search considers the exact dynamics of the game tree local to the state under consideration, and can be considered analogous to the lookahead human games players engage in when planning their moves. The bootstrap policy can be used to bias search towards promising moves, aid node evaluation, or both. By employing search, we can find promising sequences potentially far away from the bootstrap policy, accelerating learning in complex scenarios. Possible tree search algorithms include Monte Carlo Tree Search[^MCTS]-->
+<!--The role of the expert is to perform exploration, and thereby to accurately determine strong move sequences, from a single position. The role of the apprentice is to generalise the policies that the expert discovers across the whole state space, and to provide rapid access to that strong policy for bootstrapping in future searches. The canonical choice of expert is a tree search algorithm. Search considers the exact dynamics of the game tree local to the state under consideration, and can be considered analogous to the lookahead human games players engage in when planning their moves. The bootstrap policy can be used to bias search toward promising moves, aid node evaluation, or both. By employing search, we can find promising sequences potentially far away from the bootstrap policy, accelerating learning in complex scenarios. Possible tree search algorithms include Monte Carlo Tree Search[^MCTS]-->
 
-<h3 class="no_toc" id="the-boardgame-hex">The Boardgame Hex</h3>
+<h3 class="no_toc" id="the-board-game-hex">The board game Hex</h3>
 
-<p><a href="https://en.wikipedia.org/wiki/Hex_(board_game)">Hex</a> is a classic two-player boardgame played on an <script type="math/tex">n\times n</script> hexagonal grid. The players, denoted by colours black and white, alternate placing stones of their colour in empty cells. The black player wins if there is a sequence of adjacent black stones connecting the North edge of the board to the South edge. White wins if he achieves a sequence of adjacent white stones running from the West edge to the East edge.</p>
+<p><a href="https://en.wikipedia.org/wiki/Hex_(board_game)">Hex</a> is a classic two-player board game played on a <script type="math/tex">n\times n</script> hexagonal grid. The players, denoted by colours black and white, alternate placing stones of their colour in empty cells. The black player wins if there is a sequence of adjacent black stones connecting the North edge of the board to the South edge. White wins if he achieves a sequence of adjacent white stones running from the West edge to the East edge.</p>
 
 <p class="text-center"><img src="http://web4.cs.ucl.ac.uk/staff/D.Barber/images//hexBW.png" alt="hex" title="Hex" /></p>
 
-<p>The above represents play on a <script type="math/tex">5\times 5</script> board, with white winning (reproduced from [^Hex]).   Hex has deep strategy, making it challenging for machines to play and its large action set and connection-based rules means it shares similar challenges for AI to Go. Compared to Go, however, the rules are simpler and there can be no draws, making it an ideal testbed for AI.</p>
+<p>The above represents play on a <script type="math/tex">5\times 5</script> board, with white winning (reproduced from <sup id="fnref:MOHEX"><a href="#fn:MOHEX" class="footnote">8</a></sup>).   Hex has deep strategy, making it challenging for machines to play and its large action set and connection-based rules means it shares similar challenges for AI to Go. Compared to Go, the rules are simpler and there can be no draws, making it an ideal testbed for AI game play learning trategies.</p>
 
-<p>Because the rules of Hex are so simple, the game is amenable to mathematical analysis and the current best machine player MOHEX<sup id="fnref:MOHEX"><a href="#fn:MOHEX" class="footnote">5</a></sup> uses a combination of Monte Carlo Tree Search and smart mathematical insights.  MOHEX has won every Computer Games Olympiad Hex tournament since 2009. MOHEX is also trained on datasets of human expert play.</p>
+<p>Because the rules of Hex are so simple, the game is relatively amenable to mathematical analysis (compared for example to Go) and the current best machine player MOHEX<sup id="fnref:MOHEX:1"><a href="#fn:MOHEX" class="footnote">8</a></sup> uses a combination of Monte Carlo Tree Search and smart mathematical insights.  MOHEX has won every Computer Games Olympiad Hex tournament since 2009. It is noteworthy that MOHEX is also initially trained on datasets of human expert play.</p>
 
-<p>We wanted to see if we can outperform MOHEX by using our ExIt strategy, learning trained tabula rasa, without game-specific knowledge or human example play, beside the rules of the game. To do this, our expert is a MCTS player that is guided by the apprentice neural network.  Our neural network is based on a deep convolutional network, as shown below</p>
+<p>We wanted to see if we can outperform MOHEX by using our ExIt strategy, learning trained tabula rasa, without game-specific knowledge or human example play (beside the rules of the game). To do this, our expert is a MCTS player that is guided by the apprentice neural network.  Our neural network is based on a deep convolutional network, as shown below</p>
 
 <p class="text-center"><img src="http://web4.cs.ucl.ac.uk/staff/D.Barber/images//NN.png" alt="NN" title="NN" /></p>
 
-<p>The expert improvement step is then modelled by using the modified MCTS formula</p>
+<p>Expert Improvement is achieved by using the modified MCTS formula<sup id="fnref:OnlineOffline"><a href="#fn:OnlineOffline" class="footnote">9</a></sup></p>
 
 <script type="math/tex; mode=display">UCT(s,a) + w \frac{\hat{\pi}(a|s)}{n(s,a)+1}</script>
 
-<p>This formula is closely related to one found in Gelly and Silver<sup id="fnref:OnlineOffline"><a href="#fn:OnlineOffline" class="footnote">6</a></sup>. Here <script type="math/tex">s</script> is the state of the Hex board, <script type="math/tex">a</script> is a possible action (ie move) from <script type="math/tex">s</script>. The term <script type="math/tex">UCT(s,a)</script> represents the classical Upper Confidence Tree formula<sup id="fnref:MCTS:1"><a href="#fn:MCTS" class="footnote">4</a></sup> used in MCTS.</p>
+<p>Here <script type="math/tex">s</script> is the state of the Hex board, <script type="math/tex">a</script> is a possible action (ie move) from <script type="math/tex">s</script>. The term <script type="math/tex">UCT(s,a)</script> represents the classical Upper Confidence Tree formula<sup id="fnref:MCTS:1"><a href="#fn:MCTS" class="footnote">7</a></sup> used in MCTS.</p>
 
-<p>The additional term denotes apprentice  helping guide the search to more promising moves, with <script type="math/tex">\hat{\pi}</script> being the suggestion of the apprentice, and <script type="math/tex">n(s,a)</script> the number of visits currently made by the search algorithm through state <script type="math/tex">s</script> and taking action <script type="math/tex">a</script>; <script type="math/tex">w</script> is an empirically chosen weighting factor that balances the slow thinking of the expert with the fast intuition of the apprentice.</p>
+<p>The additional term helps the neural network apprentice  guide the search to more promising moves. Here <script type="math/tex">\hat{\pi}</script> is the policy (suggested relative strength of each possible action <script type="math/tex">a</script> from the board state <script type="math/tex">s</script>) of the apprentice and <script type="math/tex">n(s,a)</script> the number of visits currently made by the search algorithm through state <script type="math/tex">s</script> and taking action <script type="math/tex">a</script>; <script type="math/tex">w</script> is an empirically chosen weighting factor that balances the slow thinking of the expert with the fast intuition of the apprentice.</p>
 
-<p>To generate the data for traiing the apprentice (during each Imitation Learning phase), the batch approach generates data afresh, discarding all data from previous iterations. In the online version we consider instead a buffer of the most recent moves generted and we also consider an exponentially weighted version that favours more recent moves generated (since the more recent moves will be be from a stronger player).  A comparison of these different approaches is given below in which we compare the strength of the learned algorithm against a measure of training time.  We also show a more classical approach, known as REINFORCE (see <a href="">NIPSexitpaper</a> for details)</p>
+<p>To generate the data for training the apprentice (during each Imitation Learning phase), the batch approach generates data afresh, discarding all data from previous iterations. We also consider an online version in which we instead keep a running buffer of the most recent moves generated. We also consider an exponentially weighted online version that favours more recent moves generated (which correspond to the strongest, most recent play).  A comparison of these different approaches is given below in which we compare the strength (measure in terms of the <a href="https://en.wikipedia.org/wiki/Elo_rating_system">ELO</a> score) of the learned algorithm against a measure of training time.  We also show a more classical approach, known as REINFORCE (see <sup id="fnref:NIPSpaper:1"><a href="#fn:NIPSpaper" class="footnote">5</a></sup> for details).</p>
 
 <p class="text-center"><img src="http://web4.cs.ucl.ac.uk/staff/D.Barber/images//BatchOnline.png" alt="results" title="results" /></p>
 
-<p>What the figure shows is that the ExIt approach is considerably more effective than classical approaches.  Indeed, after training, our apprentice-aided MCTS player outperforms the best known machine Hex player, namely MOHEX, beating it in 71% of games played on a <script type="math/tex">9\times 9</script> board.</p>
+<p>The figure shows that the ExIt training approach is considerably more effective than more classical approaches.  Indeed, after training, our apprentice-aided MCTS player outperforms the best known machine Hex player, MOHEX, beating it in 71% of games played on a <script type="math/tex">9\times 9</script> board.</p>
 
 <h3 class="no_toc" id="relation-to-alphago-zero">Relation to AlphaGo Zero</h3>
 
-<p>AlphaGo Zero [? ], published shortly after this work was first published, also implements the ExIt algorithm, and shows that it is able to achieve state-of-the-art performance in Go. Blah…..</p>
+<p>AlphaGo Zero<sup id="fnref:AlphaGoZero"><a href="#fn:AlphaGoZero" class="footnote">10</a></sup> (published a few months after our work first appeared) also implements an ExIt style algorithm and shows that it possible to achieve state-of-the-art performance in Go without the use of human expert play.  There are subtle differences in the details of the training approach and architecture used, but the overall approach is essentially the same.</p>
 
 <h2 class="no_toc" id="summary">Summary</h2>
 
-<p>ExIt is great…… Blah</p>
+<p>However, we believe that it is important to state the general applicability of the ExIT idea and</p>
+
+<p>Expert Iteration is a new Reinforcement Learning algorithm,, motivated by the dual process theory of human thought. ExIt decomposes the Reinforcement Learning problem by separating the problems of generalisation and planning. Planning is performed on a case-by-case basis, and only once a strong plan is found is the resultant policy generalised. This allows for long-term planning, and results in faster learning and state-of-the-art final performance, particularly for challenging problems.</p>
+
+<!--We show that this algorithm significantly outperforms a variant of the REINFORCE algorithm in
+learning to play the board game Hex, and that the resultant tree search algorithm comfortably  defeats the state-of-the-art in Hex play, despite being trained tabula rasa.-->
 
 <h3 class="no_toc" id="references">References</h3>
 
 <div class="footnotes">
   <ol>
+    <li id="fn:TFAS">
+      <p>D. Kahneman. Thinking, Fast and Slow. Macmillan, 2011.&nbsp;<a href="#fnref:TFAS" class="reversefootnote">&#8617;</a></p>
+    </li>
     <li id="fn:Williams">
       <p>R. J. Williams. Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning. Mach. Learn., 8(3-4):229–256, 1992.&nbsp;<a href="#fnref:Williams" class="reversefootnote">&#8617;</a></p>
     </li>
@@ -349,16 +361,25 @@ System 1, is a fast, unconscious and automatic mode of thought, also known as in
       <p>V. Mnih, K. Kavukcuoglu, D. Silver, A. A. Rusu, J. Veness, M. G Bellemare, A. Graves, M. Riedmiller, A. K. Fidjeland, G. Ostrovski, et al. Human-Level Control through Deep Reinforcement Learning. Nature, 518(7540):529–533, 2015.&nbsp;<a href="#fnref:DQN" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:AlphaGo">
-      <p>D. Silver, A. Huang, C. J. Maddison, A. Guez, L. Sifre, G. Van Den Driessche, J. Schrittwieser, I. Antonoglou, V. Panneershelvam, M. Lanctot, et al. Mastering the Game of Go with Deep Neural Networks and Tree Search. Nature, 529(7587):484–489, 2016.&nbsp;<a href="#fnref:AlphaGo" class="reversefootnote">&#8617;</a>&nbsp;<a href="#fnref:AlphaGo:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+      <p>D. Silver, A. Huang, C. J. Maddison, A. Guez, L. Sifre, G. Van Den Driessche, J. Schrittwieser, I. Antonoglou, V. Panneershelvam, M. Lanctot, et al. Mastering the Game of Go with Deep Neural Networks and Tree Search. Nature, 529(7587):484–489, 2016.&nbsp;<a href="#fnref:AlphaGo" class="reversefootnote">&#8617;</a>&nbsp;<a href="#fnref:AlphaGo:1" class="reversefootnote">&#8617;<sup>2</sup></a>&nbsp;<a href="#fnref:AlphaGo:2" class="reversefootnote">&#8617;<sup>3</sup></a></p>
+    </li>
+    <li id="fn:NIPSpaper">
+      <p>T. Anthony, and T. Zheng, and D. Barber. Thinking Fast and Slow with Deep Learning and Tree Search. arXiv CoRR:abs/1705.08439. http://arxiv.org/abs/1705.08439, June 2017.&nbsp;<a href="#fnref:NIPSpaper" class="reversefootnote">&#8617;</a>&nbsp;<a href="#fnref:NIPSpaper:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:AXpaper">
+      <p>T. Anthony, and T. Zheng, and D. Barber. Thinking Fast and Slow with Deep Learning and Tree Search. arXiv CoRR:abs/1705.08439. http://arxiv.org/abs/1705.08439, June 2017.&nbsp;<a href="#fnref:AXpaper" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:MCTS">
       <p>L. Kocsis and C. Szepesvári. Bandit Based Monte-Carlo Planning. In European Conference on Machine Learning, pages 282–293. Springer, 2006.&nbsp;<a href="#fnref:MCTS" class="reversefootnote">&#8617;</a>&nbsp;<a href="#fnref:MCTS:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
     </li>
     <li id="fn:MOHEX">
-      <p>S.-C. Huang, B. Arneson, R. Hayward, M. Müller, and J. Pawlewicz. MoHex 2.0: A Pattern-Based MCTS Hex Player. In International Conference on Computers and Games, pages 60–71. Springer, 2013.&nbsp;<a href="#fnref:MOHEX" class="reversefootnote">&#8617;</a></p>
+      <p>S.-C. Huang, B. Arneson, R. Hayward, M. Müller, and J. Pawlewicz. MoHex 2.0: A Pattern-Based MCTS Hex Player. In International Conference on Computers and Games, pages 60–71. Springer, 2013.&nbsp;<a href="#fnref:MOHEX" class="reversefootnote">&#8617;</a>&nbsp;<a href="#fnref:MOHEX:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
     </li>
     <li id="fn:OnlineOffline">
       <p>S. Gelly and D. Silver. Combining Online and Offline Knowledge in UCT. In Proceedings of the 24th International Conference on Machine learning, pages 273–280. ACM, 2007.&nbsp;<a href="#fnref:OnlineOffline" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:AlphaGoZero">
+      <p>D. Silver,  etal.  Mastering the game of Go without human knowledge. Nature 550, 354–359, October 2017.&nbsp;<a href="#fnref:AlphaGoZero" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
