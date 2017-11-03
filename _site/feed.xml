@@ -5,7 +5,7 @@
     <description>David's blog...</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <updated>2017-11-03T07:46:40+00:00</updated>
+    <updated>2017-11-03T07:59:24+00:00</updated>
     <id>http://localhost:4000</id>
     <author>
       <name>David Barber</name>
@@ -76,7 +76,7 @@ System 1 is a fast, unconscious and automatic mode of thought, also known as int
 
 &lt;p&gt;Because the rules of Hex are so simple, the game is relatively amenable to mathematical analysis (compared for example to Go) and the current best machine player MoHex&lt;sup id=&quot;fnref:MOHEX:1&quot;&gt;&lt;a href=&quot;#fn:MOHEX&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt; uses a combination of Monte Carlo Tree Search and smart mathematical insights.  MoHex has won every Computer Games Olympiad Hex tournament since 2009. It is noteworthy that MoHex uses a rollout policy trained on datasets of human expert play.&lt;/p&gt;
 
-&lt;p&gt;We wanted to see if we can use our ExIt training strategy to learn an AI player than can outperform MoHex, without using any game-specific knowledge or human example play (beside the rules of the game). To do this, our expert is a MCTS player that is guided by the apprentice neural network.  Our neural network is based on a deep convolutional network, as shown below&lt;/p&gt;
+&lt;p&gt;We wanted to see if we can use our ExIt training strategy to learn an AI player than can outperform MoHex, without using any game-specific knowledge or human example play (beside the rules of the game). To do this, our expert is a MCTS player that is guided by the apprentice neural network.  Our neural network is a form of deep convolutional network with two output policies – ones for black play and one for white (see &lt;sup id=&quot;fnref:NIPSpaper:1&quot;&gt;&lt;a href=&quot;#fn:NIPSpaper&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; for details).&lt;/p&gt;
 
 &lt;!--{:.text-center img}
 ![NN](http://web4.cs.ucl.ac.uk/staff/D.Barber/images//NN.png &quot;NN&quot;)--&gt;
@@ -131,7 +131,7 @@ System 1 is a fast, unconscious and automatic mode of thought, also known as int
       &lt;p&gt;D. Silver, A. Huang, C. J. Maddison, A. Guez, L. Sifre, G. Van Den Driessche, J. Schrittwieser, I. Antonoglou, V. Panneershelvam, M. Lanctot, et al. Mastering the Game of Go with Deep Neural Networks and Tree Search. Nature, 529(7587):484–489, 2016.&amp;nbsp;&lt;a href=&quot;#fnref:AlphaGo&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:AlphaGo:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:AlphaGo:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:AlphaGo:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:NIPSpaper&quot;&gt;
-      &lt;p&gt;T. Anthony, and T. Zheng, and D. Barber. Thinking Fast and Slow with Deep Learning and Tree Search, Neural Information Processing Systems (NIPS 2017). In Press.&amp;nbsp;&lt;a href=&quot;#fnref:NIPSpaper&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;T. Anthony, and T. Zheng, and D. Barber. Thinking Fast and Slow with Deep Learning and Tree Search, Neural Information Processing Systems (NIPS 2017). In Press.&amp;nbsp;&lt;a href=&quot;#fnref:NIPSpaper&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:NIPSpaper:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:MCTS&quot;&gt;
       &lt;p&gt;L. Kocsis and C. Szepesvári. Bandit Based Monte-Carlo Planning. In European Conference on Machine Learning, pages 282–293. Springer, 2006.&amp;nbsp;&lt;a href=&quot;#fnref:MCTS&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:MCTS:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
